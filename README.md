@@ -33,8 +33,8 @@ git log                         -> to check the commits made
 git clone <url> <destination_path>
 
 ########## In order to push changes to a remote repository ############
-git pull origin master
-git push origin master
+git pull
+git push
 
 ###########################################
 ########## Useful commands ################
@@ -46,3 +46,4 @@ ls -l                     -> Shows files plus dates
 ls –a                     -> shows the unseen files
 rm filename.extension     -> removes files
 mv old_fn.ext new_fn.ext  -> changes name
+set PATH=%PATH%;C:\your\path\here\
