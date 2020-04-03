@@ -1,4 +1,4 @@
-/* utPod_driver.cpp
+/* UtPod.cpp
 Driver for the UtPod.
 
 Alvaro Erdozain
@@ -58,15 +58,11 @@ int UtPod::removeSong(Song &s){
     return SUCCESS;
   }
 
-  SongNode *temp = songs;
-  SongNode *previous;
+  SongNode *temp = songs->next;
+  SongNode *previous = songs;
 
   while (temp != NULL){
-    previous = temp;
-    temp = temp->next;
-    if ( temp->next == NULL ){
-      break;
-    }
+
     if (temp->s.getTitle() == s.getTitle() &&
         temp->s.getArtist() == s.getArtist() &&
         temp->s.getSize() == s.getSize() ){
@@ -76,11 +72,22 @@ int UtPod::removeSong(Song &s){
 
       return SUCCESS;
     }else{
+      previous = temp;
+      temp = temp->next;
       continue;
     }
+
   }
 
   return NOT_FOUND;
+}
+
+void UtPod::swap(SongNode *s1, SongNode *s2){
+//cout<< "s1 -> "  << s1 << endl;
+//cout<< "s2 -> " << s2 << endl;
+    Song temp = s1->s;
+    s1->s = s2->s;
+    s2->s =temp;
 }
 
 void UtPod::shuffle(){
@@ -93,13 +100,14 @@ void UtPod::shuffle(){
 
   //cout<<rand()<<endl; //testing random numbers
   while( curNode != NULL ){ //curNode != NULL
-    int randIndex = (rand()%numSongs) + 1;
+    int randIndex = (rand()%numSongs);
     SongNode *temp = getSongNodeAtIndex(randIndex);
-    cout<< "Llego aqui" << endl;
     swap(curNode, temp);
-
+    // cout<< curNode << endl;
     curNode = curNode->next;
+    cout<< "curNode " << curNode << endl;
   }
+  // cout<< "Llego aqui 3" << endl;
 }
 
 int UtPod::getNumSongs() const{
@@ -113,11 +121,6 @@ int UtPod::getNumSongs() const{
     return numSongs;
 }
 
-void UtPod::swap(SongNode *s1, SongNode *s2){
-    Song temp = s1->s;
-    s1->s = s2->s;
-    s2->s =temp;
-}
 
 void UtPod::showSongList(){
   SongNode *head = songs;

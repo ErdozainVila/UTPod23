@@ -1,4 +1,11 @@
-//Song.cpp
+/* Song.cpp
+Driver for the UtPod.
+
+Alvaro Erdozain
+Laura Martinez
+EE 312 03/28/2020
+
+*/
 
 #include "Song.h"
 
@@ -30,28 +37,28 @@ Song::Song(){
 }
 
 bool Song::operator ==(Song const &rhs){
-    if(size == rhs.size && title == rhs.title && artist == rhs.artist)
+    if(artist == rhs.artist && title == rhs.title && size == rhs.size)
         return true;
     return false;
 }
 
 bool Song::operator <(Song const &rhs){
-    if(artist<rhs.artist)
+    if( artist < rhs.artist )
         return true;
-    else if(title<rhs.title)
+    else if( title < rhs.title)
         return true;
-    else if(size<rhs.size)
+    else if( size < rhs.size )
         return true;
 
     return false;
 }
 
 bool Song::operator >(Song const &rhs){
-    if(artist>rhs.artist)
+    if( artist > rhs.artist )
         return true;
-    else if(title>rhs.title)
+    else if( title > rhs.title )
         return true;
-    else if(size>rhs.size)
+    else if( size > rhs.size )
         return true;
 
     return false;

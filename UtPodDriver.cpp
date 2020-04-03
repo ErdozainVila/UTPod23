@@ -1,4 +1,4 @@
-/* utPod_driver.cpp
+/* UtPod_driver.cpp
 Driver for the UtPod.
 
 Alvaro Erdozain
@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 
     cout << "Main: shuffling 3 times in a row " << endl;
     t.shuffle();
+cout << "Primer shuffle hecho" << endl;
     t.showSongList();
     cout << endl;
     t.shuffle();
@@ -66,8 +67,12 @@ int main(int argc, char *argv[])
 
     result = t.removeSong(s1);
     cout << "Main: delete, expected result = 0, result = " << result << endl;
+t.showSongList();
+
     result = t.removeSong(s5);
     cout << "Main: delete, expected result = 0, result = " << result << endl;
+t.showSongList();
+
     result = t.removeSong(s4);
     cout << "Main: delete, expected result = 0, result = " << result << endl;
     t.showSongList();
