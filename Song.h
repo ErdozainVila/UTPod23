@@ -26,8 +26,8 @@ class Song {
 
     public:
         Song();
-        Song(string t, string a, int s);
-        
+        Song(string _title, string _artist, int _size);
+
         string getTitle() const{
             return title;
         }
@@ -41,8 +41,6 @@ class Song {
         bool operator >(Song const &rhs);
         bool operator ==(Song const &rhs);
         bool operator <(Song const &rhs);
-
-
 
 };
 
