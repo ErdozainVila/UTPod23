@@ -87,7 +87,7 @@ void UtPod::swap(SongNode *s1, SongNode *s2){
 //cout<< "s2 -> " << s2 << endl;
     Song temp = s1->s;
     s1->s = s2->s;
-    s2->s =temp;
+    s2->s = temp;
 }
 
 void UtPod::shuffle(){
@@ -97,6 +97,7 @@ void UtPod::shuffle(){
 
   SongNode *curNode = songs;
   int numSongs = getNumSongs();
+  //cout << numSongs <<endl;
 
   //cout<<rand()<<endl; //testing random numbers
   while( curNode != NULL ){ //curNode != NULL
@@ -105,7 +106,7 @@ void UtPod::shuffle(){
     swap(curNode, temp);
     // cout<< curNode << endl;
     curNode = curNode->next;
-    cout<< "curNode " << curNode << endl;
+
   }
   // cout<< "Llego aqui 3" << endl;
 }
@@ -121,13 +122,12 @@ int UtPod::getNumSongs() const{
     return numSongs;
 }
 
-
 void UtPod::showSongList(){
   SongNode *head = songs;
 
   while (head != NULL){
-    cout << head->s.getTitle() << " by "
-        << head->s.getArtist() << " size of "
+    cout << head->s.getArtist() << ", "
+        << head->s.getTitle() << ", size: "
         << head->s.getSize() << endl;
     head = head->next;
   }
@@ -135,6 +135,23 @@ void UtPod::showSongList(){
 }
 
 void UtPod::sortSongList(){
+  SongNode *temp = songs;
+  SongNode *smaller;
+
+//cout << "Dentro del sortSongList antes del while" << endl;
+  while (temp != NULL){
+    if ( temp->next == NULL ){
+//cout << "Dentro del sortSongList dentro del while dentro del if" << endl;
+      break;
+    }
+//cout << "Dentro del sortSongList dentro del while" << endl;
+
+    smaller = smallerSongList( temp->next );
+    if ( temp->s > smaller->s ){
+      swap( temp , smaller );
+    }
+    temp = temp->next;
+  }
 
 }
 

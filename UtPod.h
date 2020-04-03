@@ -26,7 +26,7 @@ class UtPod
 
       int getNumSongs() const;
       void swap(SongNode *s1, SongNode *s2);
-      
+
       SongNode* getSongNodeAtIndex (int _index) const{
           SongNode* rVal = songs;
           int index = 0;
@@ -36,6 +36,31 @@ class UtPod
               rVal = rVal->next;
           }
           return rVal;  //NULL or pointer to index
+      }
+
+      /* FUNCTION - void smallerSongList
+       *  search for the smaller node in a lists
+
+         input parms - node address to start search
+         output parms -
+      */
+      SongNode* smallerSongList(SongNode *sn){
+        SongNode *smaller = sn;
+//cout << "temp->next->s.getTitle() " << sn->s.getTitle() << endl;
+        if (sn->next == NULL){
+          cout << "sn->next problem" << endl;
+          return smaller;
+        }
+        SongNode *temp = sn->next;
+
+//cout << "Dentro del smallersonglist antes del while" << endl;
+        while (temp != NULL){
+          if ( smaller->s > temp->s )
+            smaller = temp;
+          temp = temp->next;
+        }
+//cout << "Dentro del smallersonglist despues del while" << endl;
+        return smaller;
       }
 
    public:

@@ -26,7 +26,7 @@ class Song {
 
     public:
         Song();
-        Song(string _title, string _artist, int _size);
+        Song(string _artist, string _title, int _size);
 
         string getTitle() const{
             return title;
